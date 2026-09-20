@@ -1,25 +1,39 @@
 <?php
 /**
- * data-bridge-consulting.com
+ * Data Bridge Consulting — Site vitrine monopage
  * Cabinet de conseil en intelligence artificielle & data analytics
  *
  * Ce fichier unique contient :
  *  - le traitement du formulaire de contact (en haut, avant tout HTML)
  *  - la page HTML complète (hero, expertises, méthode, chiffres clés, stack, contact)
  *
- * CONFIGURATION REQUISE POUR L'ENVOI D'EMAIL :
- *  - La fonction PHP mail() nécessite un serveur configuré avec un MTA
- *    (sendmail/postfix en local, ou un service SMTP chez votre hébergeur).
- *  - En local (ex: `php -S localhost:8000`), mail() ne part généralement PAS.
- *    Pour tester sans configurer de serveur mail, ce script écrit aussi
- *    chaque message reçu dans messages.log (voir fonction save_message_log).
- *  - En production, il est recommandé de remplacer mail() par PHPMailer
- *    + un compte SMTP (Gmail, SendGrid, Mailgun...) pour une délivrabilité fiable.
+ * ENVOI D'EMAIL VIA PHPMAILER (SMTP HOSTINGER) :
+ *  - PHPMailer est inclus "en dur" dans /phpmailer/src (pas de Composer requis) :
+ *      phpmailer/src/Exception.php
+ *      phpmailer/src/PHPMailer.php
+ *      phpmailer/src/SMTP.php
+ *    Ces 3 fichiers doivent être uploadés tels quels à côté de index.php.
+ *  - Renseignez vos identifiants SMTP Hostinger ci-dessous (section Configuration).
+ *  - En cas d'échec d'envoi (identifiants invalides, port bloqué...), le message
+ *    est quand même sauvegardé dans messages.log pour ne rien perdre.
  */
 
+require __DIR__ . '/phpmailer/src/Exception.php';
+require __DIR__ . '/phpmailer/src/PHPMailer.php';
+require __DIR__ . '/phpmailer/src/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception as PHPMailerException;
+
 // ---- Configuration ---------------------------------------------------
-$destinataire = "b@data-bridge-consulting.com.fr";
-$sujet_email  = "Nouveau message depuis le site data-bridge-consulting";
+$destinataire = "b@Data-bridge-consulting.com";        // adresse qui reçoit les messages du formulaire
+$sujet_email  = "Nouveau message depuis le site Data Bridge Consulting";
+
+// Identifiants SMTP Hostinger (créés dans hPanel → Emails → Gérer → Créer un compte)
+$smtp_host     = "smtp.hostinger.com";
+$smtp_user     = "contact@Data-bridge-consulting.com";       // adresse email complète du compte Hostinger
+$smtp_password = "MOT_DE_PASSE_DU_COMPTE_EMAIL"; // ⚠️ à remplacer — voir note de sécurité plus bas
+$smtp_port     = 587;                          // 587 (STARTTLS) ou 465 (SSL, avec ENCRYPTION_SMTPS)
 
 // ---- Traitement du formulaire -----------------------------------------
 $erreurs = [];
@@ -51,24 +65,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if (empty($erreurs)) {
-            $corps = "Nouveau message reçu depuis le site data-bridge-consulting.com\n\n"
+            $corps = "Nouveau message reçu depuis le site Data Bridge Consulting\n\n"
                    . "Nom      : " . $valeurs['nom'] . "\n"
                    . "Email    : " . $valeurs['email'] . "\n"
                    . "Société  : " . ($valeurs['societe'] !== '' ? $valeurs['societe'] : '(non renseignée)') . "\n\n"
                    . "Message :\n" . $valeurs['message'] . "\n";
 
-            $headers = "From: site@data-bridge-consulting.com.fr\r\n"
-                     . "Reply-To: " . $valeurs['email'] . "\r\n"
-                     . "Content-Type: text/plain; charset=UTF-8\r\n";
+            $envoi_ok = false;
 
-            // Envoi (peut échouer silencieusement en environnement local non configuré)
-            @mail($destinataire, $sujet_email, $corps, $headers);
+            try {
+                $mail = new PHPMailer(true);
 
-            // Sauvegarde de secours, utile en développement local
+                $mail->isSMTP();
+                $mail->Host       = $smtp_host;
+                $mail->SMTPAuth   = true;
+                $mail->Username   = $smtp_user;
+                $mail->Password   = $smtp_password;
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // ENCRYPTION_SMTPS si $smtp_port = 465
+                $mail->Port       = $smtp_port;
+                $mail->CharSet    = 'UTF-8';
+
+                // L'expéditeur doit être une adresse du même domaine que le compte SMTP
+                // (sinon SPF/DKIM échouent et le mail part en spam, voire est rejeté).
+                $mail->setFrom($smtp_user, 'Site Data Bridge Consulting');
+                $mail->addAddress($destinataire);
+                $mail->addReplyTo($valeurs['email'], $valeurs['nom']);
+
+                $mail->Subject = $sujet_email;
+                $mail->Body    = $corps;
+
+                $mail->send();
+                $envoi_ok = true;
+            } catch (PHPMailerException $e) {
+                // On log l'erreur côté serveur sans jamais l'exposer au visiteur
+                error_log('Échec envoi PHPMailer : ' . $mail->ErrorInfo);
+            }
+
+            // Sauvegarde systématique : utile en développement, et filet de sécurité
+            // en production si jamais l'envoi SMTP échoue (identifiants, port bloqué...).
             save_message_log($valeurs);
 
-            $succes  = true;
-            $valeurs = ['nom' => '', 'email' => '', 'societe' => '', 'message' => ''];
+            $succes  = $envoi_ok;
+            if (!$envoi_ok) {
+                $erreurs['envoi'] = "Votre message a été enregistré, mais l'envoi de l'email a échoué. Nous vous recontacterons dès que possible, ou écrivez-nous directement à " . e($destinataire) . ".";
+            } else {
+                $valeurs = ['nom' => '', 'email' => '', 'societe' => '', 'message' => ''];
+            }
         }
     } else {
         // Honeypot rempli : on fait comme si tout allait bien, sans rien envoyer
@@ -100,7 +142,7 @@ function e(string $valeur): string
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>data-bridge-consulting.com — Conseil en intelligence artificielle & data analytics</title>
+<title>Data Bridge Consulting — Conseil en intelligence artificielle & data analytics</title>
 <meta name="description" content="Data Bridge Consulting accompagne les entreprises dans leurs projets d'intelligence artificielle et de data analytics, du cadrage à la mise en production.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -368,7 +410,8 @@ function e(string $valeur): string
     <div>
       <p class="eyebrow">Conseil en intelligence artificielle & data analytics</p>
       <h1>Chaque donnée a une direction.<br>On vous aide à la trouver.</h1>
-      <p class="lede">data-bridge-consulting.com accompagne les entreprises dans leurs projets d'IA et de data analytics, du cadrage métier jusqu'à la mise en production des modèles.</p>
+      <p class="lede">Data Bridge Consulting accompagne les entreprises dans leurs projets d'IA et de data analytics,
+        du cadrage métier jusqu'à la mise en production des modèles.</p>
       <div class="cta-row">
         <a href="#contact" class="btn btn-primary">Discuter de mon projet</a>
         <a href="#expertises" class="btn btn-ghost">Voir nos expertises</a>
@@ -457,7 +500,8 @@ function e(string $valeur): string
     <div class="wrap stats-grid">
       <div class="stat"><div class="n mono">40+</div><div class="l">projets livrés</div></div>
       <div class="stat"><div class="n mono">12</div><div class="l">secteurs d'activité accompagnés</div></div>
-      <div class="stat"><div class="n mono">12 ans</div><div class="l">d'expérience</div></div>
+      <div class="stat"><div class="n mono">12 ans</div><div class="l">d'expérience moyenne par consultant</div></div>
+      <div class="stat"><div class="n mono">98%</div><div class="l">des projets livrés dans les délais</div></div>
     </div>
   </section>
 
@@ -486,6 +530,10 @@ function e(string $valeur): string
         <?php if ($succes): ?>
           <div class="alert alert-success" role="status">
             Votre message a bien été envoyé. Nous revenons vers vous sous 48 heures.
+          </div>
+        <?php elseif (isset($erreurs['envoi'])): ?>
+          <div class="alert alert-error" role="alert">
+            <?= $erreurs['envoi'] /* déjà échappé via e() lors de sa création */ ?>
           </div>
         <?php elseif (!empty($erreurs)): ?>
           <div class="alert alert-error" role="alert">
@@ -533,7 +581,6 @@ function e(string $valeur): string
 
 <footer class="wrap">
   <div>© <?= date('Y') ?> Data Bridge Consulting — Conseil en IA & data analytics</div>
-  <div class="mono">SIRET 000 000 000 00000</div>
 </footer>
 
 </body>
