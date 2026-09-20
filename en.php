@@ -1,25 +1,25 @@
 <?php
 /**
- * Data Bridge Consulting — Site vitrine (version française)
- * Cabinet de conseil en intelligence artificielle & data analytics
+ * Data Bridge Consulting — Website (English / US version)
+ * AI & data analytics consulting firm
  *
- * La configuration, PHPMailer et le traitement du formulaire sont partagés
- * avec la version anglaise (en.php) via includes/functions.php.
+ * Configuration, PHPMailer, and form handling are shared with the French
+ * version (index.php) through includes/functions.php.
  */
 
 require __DIR__ . '/includes/functions.php';
 
-['succes' => $succes, 'erreurs' => $erreurs, 'valeurs' => $valeurs] = process_contact_form('fr');
+['succes' => $succes, 'erreurs' => $erreurs, 'valeurs' => $valeurs] = process_contact_form('en');
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Data Bridge Consulting — Conseil en intelligence artificielle & data analytics</title>
-<meta name="description" content="Data Bridge Consulting accompagne les entreprises dans leurs projets d'intelligence artificielle et de data analytics, du cadrage à la mise en production.">
-<link rel="alternate" hreflang="fr" href="index.php">
+<title>Data Bridge Consulting — AI & Data Analytics Consulting</title>
+<meta name="description" content="Data Bridge Consulting helps companies run AI and data analytics projects, from scoping to production.">
 <link rel="alternate" hreflang="en-us" href="en.php">
+<link rel="alternate" hreflang="fr" href="index.php">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -172,7 +172,7 @@ require __DIR__ . '/includes/functions.php';
   .section-head h2{ font-size: clamp(1.6rem, 2.6vw, 2.1rem); max-width: 20ch; }
   .section-head .desc{ color: var(--muted); max-width: 38ch; }
 
-  /* ---------- Expertises ---------- */
+  /* ---------- Expertise ---------- */
   .expertise-list{
     display:grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
     background: var(--line); border: 1px solid var(--line);
@@ -194,7 +194,7 @@ require __DIR__ . '/includes/functions.php';
     .hero{ grid-template-columns: 1fr; }
   }
 
-  /* ---------- Méthode ---------- */
+  /* ---------- Method ---------- */
   .steps{ list-style:none; margin:0; padding:0; }
   .steps li{
     display:grid; grid-template-columns: 64px 1fr; gap: 20px;
@@ -205,7 +205,7 @@ require __DIR__ . '/includes/functions.php';
   .steps h3{ font-size: 1.1rem; margin-bottom: 6px; }
   .steps p{ margin:0; color: var(--muted); max-width: 60ch; }
 
-  /* ---------- Chiffres clés ---------- */
+  /* ---------- Key numbers ---------- */
   .stats-band{ background: var(--panel-dark); color: var(--accent-ink); border-top:none; }
   .stats-grid{
     display:grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
@@ -278,17 +278,17 @@ require __DIR__ . '/includes/functions.php';
     <div class="brand"><span class="dot"></span>Data Bridge Consulting</div>
     <nav>
       <ul>
-        <li><a href="#expertises">Expertises</a></li>
-        <li><a href="#methode">Méthode</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#method">Method</a></li>
         <li><a href="#stack">Stack</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <a href="en.php" class="lang-switch" hreflang="en-us" aria-label="Switch to English" title="Switch to English">
+    <a href="index.php" class="lang-switch" hreflang="fr" aria-label="Passer en français" title="Passer en français">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.4 2.5 3.7 5.7 3.7 9s-1.3 6.5-3.7 9c-2.4-2.5-3.7-5.7-3.7-9s1.3-6.5 3.7-9z"/></svg>
-      EN
+      FR
     </a>
-    <a href="#contact" class="nav-cta">Discuter de mon projet</a>
+    <a href="#contact" class="nav-cta">Let's talk about your project</a>
   </div>
 </header>
 
@@ -297,18 +297,18 @@ require __DIR__ . '/includes/functions.php';
   <!-- ---------- Hero ---------- -->
   <section class="hero wrap" style="border-top:none;">
     <div>
-      <p class="eyebrow">Conseil en intelligence artificielle & data analytics</p>
-      <h1>Chaque donnée a une direction.<br>On vous aide à la trouver.</h1>
-      <p class="lede">Data Bridge Consulting accompagne les entreprises dans leurs projets d'IA et de data analytics, du cadrage métier jusqu'à la mise en production des modèles.</p>
+      <p class="eyebrow">AI & data analytics consulting</p>
+      <h1>Every dataset has a direction.<br>We help you find it.</h1>
+      <p class="lede">Data Bridge Consulting helps companies run AI and data analytics projects, from business scoping through to production deployment.</p>
       <div class="cta-row">
-        <a href="#contact" class="btn btn-primary">Discuter de mon projet</a>
-        <a href="#expertises" class="btn btn-ghost">Voir nos expertises</a>
+        <a href="#contact" class="btn btn-primary">Let's talk about your project</a>
+        <a href="#expertise" class="btn btn-ghost">See our expertise</a>
       </div>
     </div>
 
     <div class="hero-graphic">
-      <div class="cap mono">précision du modèle — 6 derniers mois</div>
-      <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Graphique montrant la précision d'un modèle progressant de 71% à 94% sur six mois">
+      <div class="cap mono">model accuracy — last 6 months</div>
+      <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chart showing model accuracy improving from 71% to 94% over six months">
         <line x1="0" y1="150" x2="360" y2="150" stroke="#2A3452" stroke-width="1"/>
         <line x1="0" y1="100" x2="360" y2="100" stroke="#2A3452" stroke-width="1"/>
         <line x1="0" y1="50"  x2="360" y2="50"  stroke="#2A3452" stroke-width="1"/>
@@ -327,77 +327,77 @@ require __DIR__ . '/includes/functions.php';
     </div>
   </section>
 
-  <!-- ---------- Expertises ---------- -->
-  <section id="expertises" class="wrap">
+  <!-- ---------- Expertise ---------- -->
+  <section id="expertise" class="wrap">
     <div class="section-head">
-      <h2>Quatre expertises, un seul objectif : des décisions mieux informées.</h2>
-      <p class="desc">Nous intervenons seuls ou en renfort de vos équipes, sur tout ou partie de la chaîne de valeur de la donnée.</p>
+      <h2>Four areas of expertise, one goal: better-informed decisions.</h2>
+      <p class="desc">We work on our own or alongside your teams, across all or part of the data value chain.</p>
     </div>
     <div class="expertise-list">
       <div class="expertise-item">
         <span class="num mono">01</span>
         <h3>Data engineering</h3>
-        <p>Architecture des données, pipelines, qualité et gouvernance. On pose des fondations solides avant de parler modèles.</p>
+        <p>Data architecture, pipelines, quality, and governance. We lay solid foundations before we talk about models.</p>
       </div>
       <div class="expertise-item">
         <span class="num mono">02</span>
-        <h3>Machine learning & IA générative</h3>
-        <p>Modèles prédictifs, cas d'usage LLM, automatisation de tâches métier — de l'expérimentation au cas d'usage réel.</p>
+        <h3>Machine learning & generative AI</h3>
+        <p>Predictive models, LLM use cases, workflow automation — from experimentation to real-world deployment.</p>
       </div>
       <div class="expertise-item">
         <span class="num mono">03</span>
         <h3>MLOps</h3>
-        <p>Mise en production, monitoring, réentraînement. Un modèle qui reste dans un notebook n'a jamais créé de valeur.</p>
+        <p>Production deployment, monitoring, retraining. A model that stays in a notebook never created any value.</p>
       </div>
       <div class="expertise-item">
         <span class="num mono">04</span>
         <h3>Data visualization & BI</h3>
-        <p>Tableaux de bord et restitutions pensés pour vos équipes métier, pas pour impressionner un comité de pilotage.</p>
+        <p>Dashboards and reporting built for your business teams — not to impress a steering committee.</p>
       </div>
     </div>
   </section>
 
-  <!-- ---------- Méthode ---------- -->
-  <section id="methode" class="wrap">
+  <!-- ---------- Method ---------- -->
+  <section id="method" class="wrap">
     <div class="section-head">
-      <h2>Une méthode en quatre étapes</h2>
-      <p class="desc">Chaque mission suit le même fil, adapté à votre contexte et à la maturité data de vos équipes.</p>
+      <h2>A four-step method</h2>
+      <p class="desc">Every engagement follows the same thread, adapted to your context and your team's data maturity.</p>
     </div>
     <ol class="steps">
       <li>
         <span class="step-num mono">01</span>
-        <div><h3>Cadrage</h3><p>On comprend vos enjeux métier, l'état réel de vos données et ce qu'une IA peut — ou ne peut pas — résoudre.</p></div>
+        <div><h3>Scoping</h3><p>We start by understanding your business challenges and the real state of your data.</p></div>
       </li>
       <li>
         <span class="step-num mono">02</span>
-        <div><h3>Architecture & data</h3><p>On structure, nettoie et fiabilise les données nécessaires. C'est souvent l'étape la plus longue, et la plus décisive.</p></div>
+        <div><h3>Architecture & data</h3><p>We structure, clean, and make the necessary data reliable. Usually the longest step, and the most decisive one.</p></div>
       </li>
       <li>
         <span class="step-num mono">03</span>
-        <div><h3>Modélisation</h3><p>On conçoit et entraîne les modèles adaptés au problème, pas à la mode du moment.</p></div>
+        <div><h3>Modeling</h3><p>We design and train the models suited to the problem, not to whatever's trending.</p></div>
       </li>
       <li>
         <span class="step-num mono">04</span>
-        <div><h3>Déploiement</h3><p>On industrialise, on monitore, et on transmet à vos équipes ce qu'il faut pour faire vivre la solution.</p></div>
+        <div><h3>Deployment</h3><p>We industrialize, monitor, and hand off what your teams need to keep the solution running.</p></div>
       </li>
     </ol>
   </section>
 
-  <!-- ---------- Chiffres clés ---------- -->
+  <!-- ---------- Key numbers ---------- -->
   <section class="stats-band">
     <div class="wrap stats-grid">
-      <div class="stat"><div class="n mono">40+</div><div class="l">projets livrés</div></div>
-      <div class="stat"><div class="n mono">12</div><div class="l">secteurs d'activité accompagnés</div></div>
-      <div class="stat"><div class="n mono">6 ans</div><div class="l">d'expérience moyenne par consultant</div></div>
-      <div class="stat"><div class="n mono">98%</div><div class="l">des projets livrés dans les délais</div></div>
+      <div class="stat"><div class="n mono">40+</div><div class="l">projects delivered</div></div>
+      <div class="stat"><div class="n mono">12</div><div class="l">industries served</div></div>
+      <div class="stat"><div class="n mono">6 years</div><div class="l">average consultant experience</div></div>
+      <div class="stat"><div class="n mono">98%</div><div class="l">of projects delivered on time</div></div>
     </div>
   </section>
 
   <!-- ---------- Stack ---------- -->
   <section id="stack" class="wrap">
     <div class="section-head">
-      <h2>Une stack technique éprouvée</h2>
-      <p class="desc">Nous choisissons les outils en fonction du besoin, pas l'inverse.</p>
+      <h2>A proven technical stack</h2>
+      <p class="desc">We choose tools based on the need, not the other way around.</p>
     </div>
     <div class="stack-tags">
       <span>Python</span><span>PyTorch</span><span>TensorFlow</span><span>scikit-learn</span>
@@ -410,31 +410,31 @@ require __DIR__ . '/includes/functions.php';
   <section id="contact" class="wrap">
     <div class="contact-grid">
       <div class="contact-info">
-        <h3>Parlons de votre projet</h3>
-        <p>Un premier échange de 30 minutes suffit généralement pour savoir si on peut vous aider, et comment.</p>
+        <h3>Let's talk about your project</h3>
+        <p>A first 30-minute call is usually enough to tell whether we can help, and how.</p>
         <div class="addr mono">
-          <div>12 rue de la Data, 75011 Paris</div>
+          <div>12 Rue de la Data, 75011 Paris, France</div>
         </div>
       </div>
 
       <div>
         <?php if ($succes): ?>
           <div class="alert alert-success" role="status">
-            Votre message a bien été envoyé. Nous revenons vers vous sous 48 heures.
+            Your message has been sent. We'll get back to you within 48 hours.
           </div>
         <?php elseif (isset($erreurs['envoi'])): ?>
           <div class="alert alert-error" role="alert">
-            <?= $erreurs['envoi'] /* déjà échappé via e() lors de sa création */ ?>
+            <?= $erreurs['envoi'] /* already escaped via e() when it was created */ ?>
           </div>
         <?php elseif (!empty($erreurs)): ?>
           <div class="alert alert-error" role="alert">
-            Merci de corriger les champs signalés ci-dessous.
+            Please fix the highlighted fields below.
           </div>
         <?php endif; ?>
 
         <form action="#contact" method="post" novalidate>
           <div class="field <?= isset($erreurs['nom']) ? 'has-error' : '' ?>">
-            <label for="nom">Nom</label>
+            <label for="nom">Name</label>
             <input type="text" id="nom" name="nom" value="<?= e($valeurs['nom']) ?>" autocomplete="name">
             <?php if (isset($erreurs['nom'])): ?><div class="field-error"><?= e($erreurs['nom']) ?></div><?php endif; ?>
           </div>
@@ -446,7 +446,7 @@ require __DIR__ . '/includes/functions.php';
           </div>
 
           <div class="field">
-            <label for="societe">Société <span style="color:var(--muted);">(facultatif)</span></label>
+            <label for="societe">Company <span style="color:var(--muted);">(optional)</span></label>
             <input type="text" id="societe" name="societe" value="<?= e($valeurs['societe']) ?>" autocomplete="organization">
           </div>
 
@@ -456,13 +456,13 @@ require __DIR__ . '/includes/functions.php';
             <?php if (isset($erreurs['message'])): ?><div class="field-error"><?= e($erreurs['message']) ?></div><?php endif; ?>
           </div>
 
-          <!-- Honeypot anti-spam : champ caché, laissé vide par un humain -->
+          <!-- Honeypot anti-spam field: hidden, left blank by a real human -->
           <div class="honeypot" aria-hidden="true">
-            <label for="site_web">Ne pas remplir ce champ</label>
+            <label for="site_web">Leave this field blank</label>
             <input type="text" id="site_web" name="site_web" tabindex="-1" autocomplete="off">
           </div>
 
-          <button type="submit" class="btn btn-primary">Envoyer le message</button>
+          <button type="submit" class="btn btn-primary">Send message</button>
         </form>
       </div>
     </div>
@@ -471,8 +471,8 @@ require __DIR__ . '/includes/functions.php';
 </main>
 
 <footer class="wrap">
-  <div>© <?= date('Y') ?> Data Bridge Consulting — Conseil en IA & data analytics</div>
-  <div><a href="mentions-legales.php" style="color:var(--muted);">Mentions légales</a> · <span class="mono">SIRET 000 000 000 00000</span></div>
+  <div>© <?= date('Y') ?> Data Bridge Consulting — AI & data analytics consulting</div>
+  <div><a href="legal-notice.php" style="color:var(--muted);">Legal notice</a> · <span class="mono">SIRET 000 000 000 00000</span></div>
 </footer>
 
 </body>
