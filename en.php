@@ -188,6 +188,7 @@ require __DIR__ . '/includes/functions.php';
   }
   .expertise-item h3{ font-size: 1.25rem; margin-bottom: 10px; }
   .expertise-item p{ color: var(--muted); margin:0; font-size: 0.97rem; }
+  .expertise-item.full{ grid-column: 1 / -1; }
 
   @media (max-width: 700px){
     .expertise-list{ grid-template-columns: 1fr; }
@@ -354,6 +355,11 @@ require __DIR__ . '/includes/functions.php';
         <h3>Data visualization & BI</h3>
         <p>Dashboards and reporting built for your business teams — not to impress a steering committee.</p>
       </div>
+      <div class="expertise-item full">
+        <span class="num mono">05</span>
+        <h3>Interim management</h3>
+        <p>Executives and operational managers deployed to steer a transformation, cover a critical leadership gap, or get a struggling data/AI project back on track.</p>
+      </div>
     </div>
   </section>
 
@@ -413,7 +419,8 @@ require __DIR__ . '/includes/functions.php';
         <h3>Let's talk about your project</h3>
         <p>A first 30-minute call is usually enough to tell whether we can help, and how.</p>
         <div class="addr mono">
-          <div>12 Rue de la Data, 75011 Paris, France</div>
+          <div>1209 Mountain Road PL NE, STE N</div>
+          <div>Albuquerque, NM 87110, USA</div>
         </div>
       </div>
 
@@ -472,7 +479,7 @@ require __DIR__ . '/includes/functions.php';
 
 <footer class="wrap">
   <div>© <?= date('Y') ?> Data Bridge Consulting — AI & data analytics consulting</div>
-  <div><a href="legal-notice.php" style="color:var(--muted);">Legal notice</a> · <span class="mono">SIRET 000 000 000 00000</span></div>
+  <div><a href="legal-notice.php" style="color:var(--muted);">Legal notice</a></div>
 </footer>
 
 </body>

@@ -2,12 +2,13 @@
 /**
  * Data Bridge Consulting — Legal Notice (English version)
  *
- * ⚠️ Content to customize before going live: the details below (company
- * registration number, host, publication director...) are placeholders
- * and must be replaced with your real information. Data Bridge Consulting is a French
- * company, so this page is a translation of the French legal notice
- * required under French law (LCEN art. 6 III) — it remains governed by
- * French law even when read by US visitors.
+ * ⚠️ Content to customize before going live: the details below (host,
+ * publication director...) are placeholders and must be replaced with
+ * your real information. The publisher is Data Bridge L.L.C., a company
+ * registered in the State of New Mexico (USA) — the "Intellectual
+ * property" and "Governing law" sections have been adapted accordingly,
+ * but should still be reviewed by a lawyer before publication, especially
+ * if the site also targets visitors in the EU.
  */
 ?>
 <!DOCTYPE html>
@@ -85,22 +86,19 @@
   <section>
     <h2>Website publisher</h2>
     <p>
-      This website is published by <strong>Data Bridge Consulting SAS</strong>, a French simplified
-      joint-stock company (société par actions simplifiée) with share capital of €10,000,
-      registered with the Paris Trade and Companies Register (RCS) under company ID
-      (SIRET) 000 000 000 00000.
+      This website is published by <strong>Data Bridge L.L.C.</strong>, a limited liability
+      company registered in the State of New Mexico (USA).
     </p>
     <ul>
-      <li>Registered office: 12 Rue de la Data, 75011 Paris, France</li>
-      <li>Phone: +33 1 84 60 12 30</li>
+      <li>Address: 1209 Mountain Road PL NE, STE N, Albuquerque, NM 87110, USA</li>
       <li>Email: <a href="mailto:contact@data-bridge-consulting.com">contact@data-bridge-consulting.com</a></li>
-      <li>EU VAT number: FR00 000000000</li>
+      <li>Employer Identification Number (EIN): [to be completed]</li>
     </ul>
   </section>
 
   <section>
     <h2>Publication director</h2>
-    <p>The publication director is [Full Name], acting as [title, e.g. President of Data Bridge Consulting SAS].</p>
+    <p>The publication director is [Full Name], acting as [title, e.g. Manager of Data Bridge L.L.C.].</p>
   </section>
 
   <section>
@@ -116,10 +114,9 @@
     <h2>Intellectual property</h2>
     <p>
       All content on this website (text, graphics, logos, icons) is, unless otherwise stated,
-      the exclusive property of Data Bridge Consulting SAS or its partners. Any reproduction, distribution,
+      the exclusive property of Data Bridge L.L.C. or its partners. Any reproduction, distribution,
       or representation of this content, in whole or in part, without prior written consent is
-      prohibited and may constitute infringement under French intellectual property law
-      (Code de la propriété intellectuelle, articles L.335-2 et seq.).
+      prohibited and may constitute infringement under applicable intellectual property law.
     </p>
   </section>
 
@@ -127,11 +124,13 @@
     <h2>Personal data</h2>
     <p>
       Information collected through the contact form (name, email, company, message) is used
-      solely to respond to your inquiry and is never sold or shared with third parties.
-      As Data Bridge Consulting is a French company, this processing is governed by the EU General Data
-      Protection Regulation (GDPR). You have the right to access, correct, delete, and port
-      your data, as well as the right to object to its processing, by writing to
+      solely to respond to your inquiry and is never sold or shared with third parties. Depending
+      on where you are located, you may have rights over your data (access, correction, deletion,
+      objection) — for example under the GDPR if you are in the European Union. You can exercise
+      these rights by writing to
       <a href="mailto:contact@data-bridge-consulting.com">contact@data-bridge-consulting.com</a>.
+      [Adapt this section with your legal counsel based on the regulations that apply to your
+      visitors — GDPR for the EU, US state privacy laws, etc.]
     </p>
     <p>
       Form data is retained for [retention period, e.g. 3 years] from the last contact,
@@ -151,9 +150,11 @@
   <section>
     <h2>Governing law</h2>
     <p>
-      This website and this legal notice are governed by French law. In the event of a
-      dispute, and failing an amicable resolution, the French courts shall have exclusive
-      jurisdiction.
+      This website and this legal notice are governed by the laws of the State of New Mexico
+      (USA), without prejudice to any consumer protection rules that may apply in a visitor's
+      country of residence. In the event of a dispute, and failing an amicable resolution, the
+      competent courts of New Mexico shall have jurisdiction, unless mandatory law provides
+      otherwise. [Clause to be validated by a lawyer.]
     </p>
   </section>
 </main>

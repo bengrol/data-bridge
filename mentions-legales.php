@@ -3,9 +3,13 @@
  * Data Bridge Consulting — Mentions légales
  *
  * ⚠️ Contenu à personnaliser avant mise en ligne : les informations
- * ci-dessous (SIRET, hébergeur, directeur de publication...) sont des
- * exemples et doivent être remplacées par vos données réelles. En France,
- * ces mentions sont une obligation légale (art. 6 III de la LCEN).
+ * ci-dessous (hébergeur, directeur de publication...) sont des exemples
+ * et doivent être remplacées par vos données réelles. L'éditeur est ici
+ * Data Bridge L.L.C., une société immatriculée dans l'État du Nouveau-Mexique
+ * (États-Unis) — les sections « Propriété intellectuelle » et « Droit
+ * applicable » ont été adaptées en conséquence, mais méritent une relecture
+ * par un juriste avant publication, notamment si le site cible aussi des
+ * visiteurs européens.
  */
 ?>
 <!DOCTYPE html>
@@ -83,21 +87,19 @@
   <section>
     <h2>Éditeur du site</h2>
     <p>
-      Le présent site est édité par <strong>Data Bridge Consulting SAS</strong>, société par actions simplifiée
-      au capital de 10 000 €, immatriculée au Registre du Commerce et des Sociétés de Paris
-      sous le numéro SIRET 000 000 000 00000.
+      Le présent site est édité par <strong>Data Bridge L.L.C.</strong>, société à responsabilité
+      limitée (Limited Liability Company) immatriculée dans l'État du Nouveau-Mexique (États-Unis).
     </p>
     <ul>
-      <li>Siège social : 12 rue de la Data, 75011 Paris, France</li>
-      <li>Téléphone : +33 1 84 60 12 30</li>
+      <li>Adresse : 1209 Mountain Road PL NE, STE N, Albuquerque, NM 87110, États-Unis</li>
       <li>Email : <a href="mailto:contact@data-bridge-consulting.com">contact@data-bridge-consulting.com</a></li>
-      <li>Numéro de TVA intracommunautaire : FR00 000000000</li>
+      <li>Numéro d'identification fiscale (EIN) : [à compléter]</li>
     </ul>
   </section>
 
   <section>
     <h2>Directeur de la publication</h2>
-    <p>Le directeur de la publication est [Nom Prénom], en qualité de [fonction, ex. Président de Data Bridge Consulting SAS].</p>
+    <p>Le directeur de la publication est [Nom Prénom], en qualité de [fonction, ex. Manager de Data Bridge L.L.C.].</p>
   </section>
 
   <section>
@@ -113,10 +115,10 @@
     <h2>Propriété intellectuelle</h2>
     <p>
       L'ensemble des contenus présents sur ce site (textes, graphismes, logos, icônes) sont,
-      sauf mention contraire, la propriété exclusive de Data Bridge Consulting SAS ou de ses partenaires.
+      sauf mention contraire, la propriété exclusive de Data Bridge L.L.C. ou de ses partenaires.
       Toute reproduction, distribution ou représentation, totale ou partielle, sans autorisation
-      préalable écrite est interdite et constituerait une contrefaçon sanctionnée par les
-      articles L.335-2 et suivants du Code de la propriété intellectuelle.
+      préalable écrite est interdite et peut constituer une contrefaçon au regard du droit
+      applicable en matière de propriété intellectuelle.
     </p>
   </section>
 
@@ -125,11 +127,12 @@
     <p>
       Les informations recueillies via le formulaire de contact (nom, email, société, message)
       sont utilisées uniquement pour répondre à votre demande et ne sont ni cédées ni vendues
-      à des tiers. Conformément au Règlement Général sur la Protection des Données (RGPD) et à
-      la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, de
-      suppression et de portabilité de vos données, ainsi que d'un droit d'opposition à leur
-      traitement, que vous pouvez exercer en écrivant à
+      à des tiers. Selon votre lieu de résidence, vous pouvez disposer de droits sur vos données
+      (accès, rectification, suppression, opposition), par exemple au titre du RGPD si vous êtes
+      situé dans l'Union européenne. Vous pouvez exercer ces droits en écrivant à
       <a href="mailto:contact@data-bridge-consulting.com">contact@data-bridge-consulting.com</a>.
+      [À adapter avec votre conseil juridique selon les réglementations applicables à vos visiteurs —
+      RGPD pour l'UE, lois étatiques américaines sur la vie privée, etc.]
     </p>
     <p>
       Les données du formulaire sont conservées pour une durée de [durée, ex. 3 ans] à compter
@@ -149,9 +152,11 @@
   <section>
     <h2>Droit applicable</h2>
     <p>
-      Le présent site et les présentes mentions légales sont soumis au droit français.
-      En cas de litige, et à défaut de résolution amiable, les tribunaux français seront
-      seuls compétents.
+      Le présent site et les présentes mentions légales sont soumis au droit de l'État du
+      Nouveau-Mexique (États-Unis), sans préjudice des règles de protection dont pourraient
+      bénéficier les consommateurs de leur pays de résidence. En cas de litige, et à défaut de
+      résolution amiable, les tribunaux compétents du Nouveau-Mexique seront saisis, sauf
+      disposition légale impérative contraire. [Clause à faire valider par un juriste.]
     </p>
   </section>
 </main>

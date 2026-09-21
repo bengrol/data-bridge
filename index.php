@@ -188,6 +188,7 @@ require __DIR__ . '/includes/functions.php';
   }
   .expertise-item h3{ font-size: 1.25rem; margin-bottom: 10px; }
   .expertise-item p{ color: var(--muted); margin:0; font-size: 0.97rem; }
+  .expertise-item.full{ grid-column: 1 / -1; }
 
   @media (max-width: 700px){
     .expertise-list{ grid-template-columns: 1fr; }
@@ -354,6 +355,11 @@ require __DIR__ . '/includes/functions.php';
         <h3>Data visualization & BI</h3>
         <p>Tableaux de bord et restitutions pensés pour vos équipes métier, pas pour impressionner un comité de pilotage.</p>
       </div>
+      <div class="expertise-item full">
+        <span class="num mono">05</span>
+        <h3>Management de transition</h3>
+        <p>Dirigeants et managers opérationnels mis à disposition pour piloter une transformation, combler une vacance de poste critique ou sécuriser un projet data/IA sous tension.</p>
+      </div>
     </div>
   </section>
 
@@ -413,7 +419,8 @@ require __DIR__ . '/includes/functions.php';
         <h3>Parlons de votre projet</h3>
         <p>Un premier échange de 30 minutes suffit généralement pour savoir si on peut vous aider, et comment.</p>
         <div class="addr mono">
-          <div>12 rue de la Data, 75011 Paris</div>
+          <div>1209 Mountain Road PL NE, STE N</div>
+          <div>Albuquerque, NM 87110, USA</div>
         </div>
       </div>
 
@@ -472,7 +479,7 @@ require __DIR__ . '/includes/functions.php';
 
 <footer class="wrap">
   <div>© <?= date('Y') ?> Data Bridge Consulting — Conseil en IA & data analytics</div>
-  <div><a href="mentions-legales.php" style="color:var(--muted);">Mentions légales</a> · <span class="mono">SIRET 000 000 000 00000</span></div>
+  <div><a href="mentions-legales.php" style="color:var(--muted);">Mentions légales</a></div>
 </footer>
 
 </body>
