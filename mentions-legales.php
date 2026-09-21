@@ -80,9 +80,6 @@
   <h1>Mentions légales</h1>
   <p class="updated">Dernière mise à jour : <?= date('d/m/Y') ?></p>
 
-  <div class="note">
-    ⚠️ Cette page est un modèle. Remplacez les informations ci-dessous par les données réelles de votre entreprise avant la mise en ligne du site.
-  </div>
 
   <section>
     <h2>Éditeur du site</h2>
@@ -98,7 +95,7 @@
 
   <section>
     <h2>Directeur de la publication</h2>
-    <p>Le directeur de la publication est [Nom Prénom], en qualité de [fonction, ex. Manager de Data Bridge L.L.C.].</p>
+    <p>Le directeur de la publication est Mr Adam P, en qualité de Manager de Data Bridge.</p>
   </section>
 
   <section>
@@ -134,7 +131,7 @@
       RGPD pour l'UE, lois étatiques américaines sur la vie privée, etc.]
     </p>
     <p>
-      Les données du formulaire sont conservées pour une durée de [durée, ex. 3 ans] à compter
+      Les données du formulaire sont conservées pour une durée de 3 ans à compter
       du dernier contact, sauf obligation légale contraire.
     </p>
   </section>
@@ -155,7 +152,7 @@
       Nouveau-Mexique (États-Unis), sans préjudice des règles de protection dont pourraient
       bénéficier les consommateurs de leur pays de résidence. En cas de litige, et à défaut de
       résolution amiable, les tribunaux compétents du Nouveau-Mexique seront saisis, sauf
-      disposition légale impérative contraire. [Clause à faire valider par un juriste.]
+      disposition légale impérative contraire.
     </p>
   </section>
 </main>
