@@ -93,7 +93,6 @@
     <ul>
       <li>Adresse : 1209 Mountain Road PL NE, STE N, Albuquerque, NM 87110, États-Unis</li>
       <li>Email : <a href="mailto:contact@data-bridge-consulting.com">contact@data-bridge-consulting.com</a></li>
-      <li>Numéro d'identification fiscale (EIN) : [à compléter]</li>
     </ul>
   </section>
 
