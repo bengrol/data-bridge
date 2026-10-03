@@ -127,8 +127,6 @@
       (accès, rectification, suppression, opposition), par exemple au titre du RGPD si vous êtes
       situé dans l'Union européenne. Vous pouvez exercer ces droits en écrivant à
       <a href="mailto:contact@data-bridge-consulting.com">contact@data-bridge-consulting.com</a>.
-      [À adapter avec votre conseil juridique selon les réglementations applicables à vos visiteurs —
-      RGPD pour l'UE, lois étatiques américaines sur la vie privée, etc.]
     </p>
     <p>
       Les données du formulaire sont conservées pour une durée de 3 ans à compter
