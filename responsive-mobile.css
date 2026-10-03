@@ -1,0 +1,149 @@
+/* ==========================================================
+   responsive-mobile.css
+   Correctifs responsive pour smartphones (data-bridge-consulting.com)
+   À charger APRÈS la feuille de style existante.
+   Pré-requis dans <head> :
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   ========================================================== */
+
+/* ---------- Base : valable sur tous les écrans ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  overflow-x: hidden;           /* évite le scroll horizontal parasite */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+img, video, iframe, svg, canvas, embed, object {
+  max-width: 100%;
+  height: auto;
+}
+
+table { max-width: 100%; }
+
+/* ---------- Tablettes et smartphones (≤ 768px) ---------- */
+@media (max-width: 768px) {
+
+  /* Conteneurs : on supprime les largeurs fixes */
+  .container, .wrapper, .content, .inner, .row,
+  main, section, header, footer, article {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  section, .section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  /* Typographie fluide */
+  body { font-size: 16px; line-height: 1.6; }
+  h1 { font-size: clamp(1.7rem, 7vw, 2.2rem); line-height: 1.2; }
+  h2 { font-size: clamp(1.4rem, 5.5vw, 1.8rem); line-height: 1.25; }
+  h3 { font-size: clamp(1.15rem, 4.5vw, 1.4rem); }
+
+  /* Grilles et colonnes : passage en une seule colonne */
+  .row, .columns, .grid, .cards, .services, .features,
+  .flex, .d-flex, [class*="col-"], [class*="column"] {
+    display: block;
+  }
+  .grid, .cards, .services, .features {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+  [class*="col-"], [class*="column"] {
+    width: 100% !important;
+    float: none !important;
+    margin-bottom: 20px;
+  }
+
+  /* Éléments positionnés / flottants */
+  .float-left, .float-right, .left, .right,
+  [style*="float"] {
+    float: none !important;
+  }
+
+  /* Navigation : empilée (adapter si menu burger existant) */
+  nav ul, .menu, .nav, .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  nav a, .menu a, .nav a {
+    display: block;
+    padding: 14px 16px;      /* zone tactile ≥ 44px */
+  }
+
+  header, .header {
+    position: static;         /* évite un en-tête fixe trop haut */
+    height: auto !important;
+  }
+
+  /* Boutons et formulaires */
+  button, .btn, .button, input[type="submit"], a.cta {
+    display: inline-block;
+    min-height: 44px;
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+  .hero .btn, .cta { width: 100%; text-align: center; }
+
+  input, select, textarea {
+    width: 100% !important;
+    font-size: 16px;          /* empêche le zoom auto sur iOS */
+    min-height: 44px;
+  }
+
+  /* Hero / bannières */
+  .hero, .banner, .slider, [class*="hero"] {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 48px 16px !important;
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* Tableaux : scroll horizontal interne */
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+
+  /* Pied de page */
+  footer .row, footer .columns, footer > div {
+    display: block;
+    text-align: center;
+  }
+  footer [class*="col-"], footer ul { margin-bottom: 20px; }
+}
+
+/* ---------- Petits smartphones (≤ 480px) ---------- */
+@media (max-width: 480px) {
+  body { font-size: 15px; }
+
+  section, .section {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.35rem; }
+
+  .btn, .button, button, a.cta { width: 100%; }
+}
