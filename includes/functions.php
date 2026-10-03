@@ -3,7 +3,7 @@
  * Data Bridge Consulting — logique partagée entre les versions FR (index.php) et EN (en.php).
  *
  * Ce fichier centralise :
- *  - la configuration (destinataire, identifiants SMTP Hostinger)
+ *  - la configuration (destinataire et identifiants SMTP chargés depuis .env)
  *  - l'envoi d'email via PHPMailer (inclus manuellement, sans Composer)
  *  - la validation et le traitement du formulaire de contact, en FR ou EN
  *  - deux petits helpers : e() pour l'échappement HTML, save_message_log()
@@ -17,15 +17,69 @@ require __DIR__ . '/../phpmailer/src/SMTP.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception as PHPMailerException;
 
+function load_env_file(string $path): void
+{
+    if (!is_readable($path)) {
+        return;
+    }
+
+    foreach (file($path, FILE_IGNORE_NEW_LINES) as $line) {
+        $line = trim($line);
+        if ($line === '' || $line[0] === '#') {
+            continue;
+        }
+
+        if (strpos($line, 'export ') === 0) {
+            $line = substr($line, 7);
+        }
+
+        if (!preg_match('/^([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$/', $line, $matches)) {
+            continue;
+        }
+
+        $key = $matches[1];
+        if (getenv($key) !== false || array_key_exists($key, $_ENV) || array_key_exists($key, $_SERVER)) {
+            continue;
+        }
+
+        $value = trim($matches[2]);
+        $quote = substr($value, 0, 1);
+        $last = substr($value, -1);
+        if (($quote === '"' || $quote === "'") && $last === $quote) {
+            $value = substr($value, 1, -1);
+            if ($quote === '"') {
+                $value = stripcslashes($value);
+            }
+        } else {
+            $value = preg_replace('/\s+#.*$/', '', $value);
+        }
+
+        $_ENV[$key] = $value;
+        putenv($key . '=' . $value);
+    }
+}
+
+function env_value(string $key, string $default): string
+{
+    $value = getenv($key);
+    if ($value !== false) {
+        return $value;
+    }
+
+    return isset($_ENV[$key]) ? (string) $_ENV[$key] : $default;
+}
+
+load_env_file(__DIR__ . '/../.env');
+
 // ---- Configuration ---------------------------------------------------
 // Adresse qui reçoit les messages du formulaire (identique pour les deux langues)
-const CONTACT_DESTINATAIRE = "contact@data-bridge-consulting.com";
+define('CONTACT_DESTINATAIRE', env_value('CONTACT_DESTINATAIRE', 'contact@data-bridge-consulting.com'));
 
-// Identifiants SMTP Hostinger (créés dans hPanel → Emails → Gérer → Créer un compte)
-const SMTP_HOST     = "smtp.hostinger.com";
-const SMTP_USER     = "contact@data-bridge-consulting.com";        // adresse email complète du compte Hostinger
-const SMTP_PASSWORD = "MOT_DE_PASSE_DU_COMPTE_EMAIL"; // ⚠️ à remplacer avant mise en ligne
-const SMTP_PORT     = 587;                            // 587 (STARTTLS) ou 465 (SSL, avec ENCRYPTION_SMTPS)
+// Paramètres SMTP Hostinger (variables définies dans .env ou par l'hébergeur)
+define('SMTP_HOST', env_value('SMTP_HOST', 'smtp.hostinger.com'));
+define('SMTP_USER', env_value('SMTP_USER', 'contact@data-bridge-consulting.com'));
+define('SMTP_PASSWORD', env_value('SMTP_PASSWORD', ''));
+define('SMTP_PORT', (int) env_value('SMTP_PORT', '587'));
 
 function e(string $valeur): string
 {
